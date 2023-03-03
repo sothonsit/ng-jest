@@ -6,42 +6,33 @@
       <div class="mb-3">
         <label for="name" class="form-label">Name</label>
         <input type="text" class="form-control" id="name" formControlName="name" [ngClass]="displayInvalid('name')">
-        <div *ngIf="hasError('name')" class="invalid-feedback">
-          Please enter your name.
-        </div>
+        <span *ngIf="hasError('name')" class="invalid-feedback" id="name-required">Please enter your name.</span>
       </div>
       <!-- Email -->
       <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
         <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="displayInvalid('email')">
-        <div *ngIf="hasError('email')" class="invalid-feedback">
-          Please enter email address.
-        </div>
-        <div *ngIf="hasError('email', 'email')" class="invalid-feedback">
-          Please enter a valid email address.
-        </div>
+        <span *ngIf="hasError('email')" class="invalid-feedback" id="email-required">Please enter your email address.</span>
+        <span *ngIf="hasError('email', 'email')" class="invalid-feedback" id="email-pattern">Please enter a valid email address pattern.</span>
       </div>
       <!-- Password -->
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password" formControlName="password" minlength="8" [ngClass]="displayInvalid('password')">
-        <div *ngIf="hasError('password')" class="invalid-feedback">
-          Please enter a password.
-        </div>
-        <div *ngIf="hasError('password', 'minlength')" class="invalid-feedback">
-          Please enter a password with at least 8 characters.
-        </div>
+        <span *ngIf="hasError('password')" class="invalid-feedback">Please enter a password.</span>
+        <span *ngIf="hasError('password', 'minlength')" class="invalid-feedback">Please enter a password with at least 8 characters.</span>
       </div>
       <!-- Confirm Password -->
       <div class="mb-3">
         <label for="confirmPassword" class="form-label">Confirm Password</label>
         <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" [ngClass]="displayInvalid('confirmPassword')">
-        <div *ngIf="hasError('confirmPassword')" class="invalid-feedback">
-          Please confirm your password.
-        </div>
+        <span *ngIf="hasError('confirmPassword')" class="invalid-feedback">Please confirm your password.</span>
+        <span *ngIf="hasError('confirmPassword', 'passwordNotMatch')" class="invalid-feedback">Confirm your password not match.</span>
       </div>
       <!-- Submit Button -->
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
 </div>
+
+<app-modal #modal message="SUCCESS"></app-modal>
